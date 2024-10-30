@@ -1,0 +1,140 @@
+<div class="fineart-thecart">
+	<h2 class="site-page-title"></h2>
+
+	<div id="messages" class="success">To complete your purchase, <strong>send bitcoins</strong> to the address below.</div>
+
+	<div id="fineart-thecart-items">
+		<h3>Your Artwork</h3>
+
+		<% var total=0; %>
+		<% for(var i=0; i<cart['products'].length; i++) { %>
+			<% var option = cart['products'][i]['post']['options'][cart['products'][i]['option']]; %>
+
+			<div class="fineart-thecart-item" data-id="cart['products'][i]['id']" data-quantity="cart['products'][i]['quantity']" data-price="<%= option['price'] %>" data-option="<%= cart['products'][i]['option'] %>" data-weight="<%= option['weight'] %>" data-width="<%= option['width'] %>" data-length="<%= option['length'] %>" data-height="<%= option['height'] %>">
+
+				<div class="fineart-thecart-thumbnail">
+					<img src="<%= cart['products'][i]['post']['image'][0] %>?w=75" />
+				</div>
+
+				<div class="fineart-thecart-info">
+					<%= cart['products'][i]['post']['title'] %>
+					<div class="fineart-thecart-dimensions"><%= cart['products'][i]['post']['details']['width'] %> x <%= cart['products'][i]['post']['details']['height'] %> inches</div>
+					<div class="fineart-thecart-medium"><%= cart['products'][i]['post']['details']['medium'] %></div>
+					<div><%= option['name'] %></div>
+				</div>
+
+				<div class="fineart-thecart-optioninfo">
+
+					<div><span data-id="<%= cart['products'][i]['id'] %>" data-option="<%= cart['products'][i]['option'] %>" class="quantity-field"><%= cart['products'][i]['quantity'] %></span></div>
+
+				</div>
+
+				<br class="clearfix"/>
+
+			</div>
+		<% } %>
+
+		<div id="totals" class="fineart-thecart-total">
+			<div id="totals-total-none"><%= cart['total_btc'] %> BTC</div>
+		</div>
+
+	</div>
+
+	<div id="fineart-thecart-payment">
+
+		<input type="hidden" name="fmethod" id="fmethod" value="<%= request['method'] %>"/>
+
+		<div id="cart-contact">
+			<h3>Shipping Information</h3>
+			<% if ( typeof(request) != 'undefined' ) { %> 
+			<div id="shipping-address">
+				<input type="hidden" name="fname" id="fname" value="<%= request['name'] %>"/>
+				<%= request['name'] %><br/>
+				<input type="hidden" name="faddress1" id="faddress1" value="<%= request['address1'] %>"/>
+				<%= request['address1'] %>
+				<input type="hidden" name="faddress2" id="faddress2" value="<%= request['address2'] %>"/>
+				<%= request['address2'] %><br/>
+				<input type="hidden" name="fcity" id="fcity" value="<%= request['city'] %>"/>
+				<%= request['city'] %>,
+				<input type="hidden" name="fstate" id="fstate" value="<%= request['state'] %>"/>
+				<%= request['state'] %>
+				<input type="hidden" name="zip" id="zip" value="<%= request['zip'] %>"/>
+				<%= request['zip'] %><br/>
+				<input type="hidden" name="country" id="country" value="<%= request['country'] %>"/>
+				<%= request['country'] %><br/>
+			</div>
+			<div id="contact-information">
+				<input type="hidden" name="sip" id="zip" value="<%= request['sip'] %>"/>
+				<input type="hidden" name="email" id="email" value="<%= request['email'] %>"/>
+				<input type="hidden" name="publickey" id="publickey" value="<%= request['publickey'] %>"/>
+				<% if ( request['sip'] ) { %>
+					SIP: <%= request['sip'] %><br/>
+				<% } %>
+				<% if ( request['email'] ) { %>
+					Email: <%= request['email'] %>
+					<% if ( request['publickey'] ) { %>
+						<span id="publickeyshowbutton">(Show Public Key)</span>
+						<span id="publickeyhidebutton">(Hide Public Key)</span>
+					<% } %>
+					<br/>
+				<% } %>
+			</div>
+
+			<div id="publickeyshow"><%= request['publickey'] %></div>
+
+			<div class="clearfix"></div>
+
+			<% } %>
+		</div>
+
+		<div id="cart-payment">
+
+			<h3>Send Bitcoins</h3>
+
+			<div id="cart-bitcoin-payment">
+
+				<div id="cart-bitcoin-payment-link">
+
+					<div id="cart-bitcoin-payment-link-qrcode">
+
+						<a href="bitcoin:<%= request['bitcoin_address'] %>?amount=<%= cart['total_btc'] %>"><img id="qrcode" src="data:image/png;base64,<%= request['bitcoin_qrcode'] %>" /></a>
+
+					</div>
+
+					<div id="cart-bitcoin-payment-link-info">
+
+						<p>Amount (BTC):<br/>
+						<strong><%= cart['total_btc'] %></strong></p>
+
+						<p>Address:<br/>
+						<%= request['bitcoin_address'] %></p>
+
+						<div id="paywithbitcoinwrapper">
+							<a id="paywithbitcoin" href="bitcoin:<%= request['bitcoin_address'] %>?amount=<%= cart['total_btc'] %>">Pay with Bitcoin</a>
+							<p class="description">This button will open your bitcoin wallet application. When payment is recieved this page will update with order confirmation.</p>
+						</div>
+
+					</div>
+
+					<div class="clearfix"></div>
+
+				</div>
+	
+
+			</div>
+
+		</div>
+
+	</div>		
+
+	<div class="clearfix"></div>
+
+</div>
+
+<div id="security-notice"><div class="secure-icon"></div><p>This is a secured page and it is accessible only to you for this window of time. You will not be able to return to this information if you close, refresh or navigate away from this page.</p></div>
+
+<%= this.partial({url: templatesurl+'footer.ejs'}) %>
+
+
+
+

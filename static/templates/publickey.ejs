@@ -1,0 +1,22 @@
+<%= this.partial({url: templatesurl+'header.ejs'}) %>
+
+<div id="fineart-about">
+<div id="fineart-single-info">
+<h2 class="site-page-title">GPG Public Key</h2>  
+</div>
+<div><a href="<%= items[0]['permalink'] %>"></a> </div>
+<div class="body">
+
+<pre class="publickey">
+<%= contact['email_public_key'] %>
+</pre>
+
+</div>
+</div>
+
+<%= this.partial({url: templatesurl+'footer.ejs'}) %>
+
+
+
+
+

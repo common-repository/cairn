@@ -1,0 +1,14 @@
+<%= this.partial({url: templatesurl+'header.ejs'}) %>
+
+<div id="fineart-about">
+<div id="fineart-single-info">
+<h2 class="site-page-title"><%= items[0]['title'] %></h2>  
+<div class="single-meta"><p>By <span class="author"><%= items[0]['author'] %></span> | <span class="date"><%= items[0]['pretty_date'] %></span></p></div>
+</div>
+<div><a href="<%= items[0]['permalink'] %>"></a> </div>
+<div class="body"><%= items[0]['body'] %></div>
+</div>
+
+<%= this.partial({url: templatesurl+'footer.ejs'}) %>
+
+

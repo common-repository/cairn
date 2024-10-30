@@ -1,0 +1,26 @@
+<%= this.partial({url: templatesurl+'header.ejs'}) %>
+
+<div id="fineart-about">
+<h2 class="site-page-title">News</h2>  
+<div class="entry-overviews">
+<% for(var i=0; i<items.length; i++) { %>
+
+	<div class="entry-overview">
+		<div class="date"><%= items[i]['pretty_date'] %></div>
+		<div class="detail">
+			<h1>
+				<a href="<%= items[i]['permalink'] %>"><%= items[i]['title'] %></a>
+			</h1>
+			<div class="summary">
+				<p><%= items[i]['excerpt'] %></p>
+			</div>
+		</div>
+		<div class="clearfix"/>
+	</div>
+
+<% } %>
+</div>
+</div>
+
+<%= this.partial({url: templatesurl+'footer.ejs'}) %>
+

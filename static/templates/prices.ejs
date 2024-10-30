@@ -1,0 +1,39 @@
+<% if ( method == 'paypal' || method == 'credit' ) { %>
+	
+<div class='fineart-thecart-price-usd'>
+					
+	<input type="hidden" id="amount_usd" value="<%= total_usd.toFixed(2) %>"/>
+
+	<div id='totals-total-usd'><div id='totals-total-show-details'><div class="show-details">Show Details</div><div class="hide-details">Hide Details</div></div>Total: <strong> <%= total_usd.toFixed(2) %> USD</strong></div>
+
+	<div id='fineart-thecart-price-details'>
+		<div id='totals-printing-usd'>Printing: <%= calculated['printing']['USD'].toFixed(2) %> USD</div>
+		<div id='totals-framing-usd'>Framing: <%= calculated['framing']['USD'].toFixed(2) %> USD</div>
+		<div id='totals-production-usd'>Production: <%= calculated['production']['USD'].toFixed(2) %> USD</div>
+		<div id='totals-artist-usd'>Artist Fees: <%= calculated['artist']['USD'].toFixed(2) %> USD</div>
+		<div id='totals-fees-usd'>Transaction Fees: <%= calculated['fees']['USD'].toFixed(2) %> USD</div>
+		<div id='totals-shipping-usd'>Shipping: <%= calculated['shipping']['USD'].toFixed(2) %> USD</div>
+	</div>
+
+</div>
+
+<% } else if ( method == 'btc' ) { %>
+
+<div class='fineart-thecart-price-btc'>
+
+	<input type="hidden" id="amount_btc" value="<%= total_btc %>"/>
+
+	<div id='totals-total-btc'><div id='totals-total-show-details'><div class="show-details">Show Details</div><div class="hide-details">Hide Details</div></div> Total: <strong> <%= total_btc %> BTC</strong></div>
+
+	<div id='fineart-thecart-price-details'>
+		<div id='totals-printing-btc'>Printing: <%= calculated['printing']['BTC'] %> BTC</div>
+		<div id='totals-framing-btc'>Framing: <%= calculated['framing']['BTC'] %> BTC</div>
+		<div id='totals-production-btc'>Production: <%= calculated['production']['BTC'] %> BTC</div>
+		<div id='totals-artist-btc'>Artist Fees: <%= calculated['artist']['BTC'] %> BTC</div>
+		<div id='totals-fees-btc'>Transaction Fees: <%= calculated['fees']['BTC'] %> BTC</div>
+		<div id='totals-shipping-btc'>Shipping: <%= calculated['shipping']['BTC'] %> BTC</div>
+	</div>
+
+</div>
+
+<% } %>

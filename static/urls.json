@@ -1,0 +1,229 @@
+{
+	"uri": [
+		{ 
+			"path" : "^/$",
+			"view" : "main",
+			"title": "Welcome",
+			"callback" : "welcome_callback",
+			"request": {
+				"post_type" : "fineart",
+				"numberposts" : 1
+			},
+			"class" : "welcome",
+			"template": "/templates/welcome.ejs"
+		},
+		{ 
+			"path" : "^/portfolio/feed/atom/?$",
+			"view" : "feed",
+			"title": "Portfolio Feed",
+			"request": {
+				"post_type" : "portfolio",
+				"feed" : "atom"
+			}
+		},
+		{ 
+			"path" : "^/portfolio/feed/?$",
+			"view" : "feed",
+			"title": "Portfolio Feed",
+			"request": {
+				"post_type" : "portfolio",
+				"feed" : "rss2"
+			}
+		},
+		{
+			"path" : "^/portfolio/?$",
+			"callback" : "portfolioarchive_callback",
+			"view" : "main",
+			"title" : "Portfolio",
+			"request" : {
+				"post_type" : "portfolio",
+				"numberposts" : -1
+			},
+			"class" : "portfolioarchive",
+			"template" : "/templates/portfolio.ejs"
+		},
+		{ 
+			"path" : "^/portfolio/%postname%/?$",
+			"callback" : "portfolio_callback",
+			"view" : "main",
+			"title": "Gallery",
+			"request" : {
+				"post_type" : "portfolio",
+				"name" : "%postname%"
+			},
+			"class" : "portfolio",
+			"template": "/templates/portfoliosingle.ejs"
+		},
+		{ 
+			"path" : "^/shop/feed/atom/?$",
+			"view" : "feed",
+			"title": "Shop Feed",
+			"request": {
+				"post_type" : "fineart",
+				"feed" : "atom"
+			}
+		},
+		{ 
+			"path" : "^/shop/feed/?$",
+			"view" : "feed",
+			"title": "Shop Feed",
+			"request": {
+				"post_type" : "fineart",
+				"feed" : "rss2"
+			}
+		},
+		{ 
+			"path" : "^/shop/invoice/?$",
+			"callback" : "cart_callback",
+			"view" : "main",
+			"title": "Your Shopping Cart",
+			"request" : {
+				"posts_set" : true,			
+				"posts_set_status" : "cart"
+			},
+			"class" : "cart",
+			"template": "/templates/cart.ejs"
+		},
+		{ 
+			"path" : "^/shop/invoice/bitcoin/?$",
+			"callback" : "bitcoin_callback",
+			"view" : "main",
+			"title": "Your Order",
+			"request" : {
+				"posts_set" : true
+			},
+			"class" : "bitcoin",
+			"template": "/templates/bitcoin.ejs"
+		},
+		{ 
+			"path" : "^/shop/invoice/credit/?$",
+			"callback" : "credit_callback",
+			"view" : "main",
+			"title": "Your Order",
+			"request" : {
+				"posts_set" : true
+			},
+			"class" : "credit",
+			"template": "/templates/credit.ejs"
+		},
+		{ 
+			"path" : "^/shop/invoice/thankyou/?$",
+			"callback" : "thankyou_callback",
+			"view" : "main",
+			"title": "Thank You",
+			"request" : {
+				"posts_set" : true
+			},
+			"class" : "thankyou",
+			"template": "/templates/thankyou.ejs"
+		},
+		{ 
+			"path" : "^/shop/invoice/expired/?$",
+			"callback" : "expired_callback",
+			"view" : "main",
+			"title": "Expired",
+			"request" : {
+				"posts_set" : true
+			},
+			"class" : "expired",
+			"template": "/templates/expired.ejs"
+		},
+		{ 
+			"path" : "^/shop/%postname%/?$",
+			"callback" : "gallery_callback",
+			"view" : "main",
+			"title": "Gallery",
+			"request" : {
+				"post_type" : "fineart",
+				"name" : "%postname%"
+			},
+			"class" : "gallery",
+			"template": "/templates/gallery.ejs"
+		},
+		{ 
+			"path" : "^/shop/?$",
+			"callback" : "archive_callback",
+			"view" : "main",
+			"title": "Shop Archive",
+			"request" : {
+				"post_type" : "fineart",
+				"numberposts" : -1
+			},
+			"class" : "archive",
+			"template": "/templates/shop.ejs"
+		},
+		{ 
+			"path" : "^/news/?$",
+			"callback" : "news_callback",
+			"view" : "main",
+			"title": "News",
+			"request" : {
+				"post_type" : "post",
+				"numberposts" : -1
+			},
+			"class" : "news",
+			"template": "/templates/news.ejs"
+		},
+		{ 
+			"path" : "^/news/%year%/%monthnum%/%postname%/?$",
+			"callback" : "news_callback",
+			"view" : "main",
+			"title": "News",
+			"request" : {
+				"post_type" : "post", 
+				"year" : "%year%",
+				"monthnum" : "%monthnum%",
+				"name" : "%postname%"
+			},
+			"class" : "single",
+			"template": "/templates/single.ejs"
+		},
+		{ 
+			"path" : "^/news/feed/?$",
+			"view" : "feed",
+			"title": "News Feed",
+			"request": {
+				"post_type" : "post",
+				"feed" : "rss2"
+			}
+		},
+		{ 
+			"path" : "^/news/feed/atom/?$",
+			"view" : "feed",
+			"title": "News Feed",
+			"request": {
+				"post_type" : "post",
+				"feed" : "atom"
+			}
+		},
+		{ 
+			"path" : "^/contact/?$",
+			"callback" : "contact_callback",
+			"view" : "main",
+			"title": "Contact",
+			"class" : "contact",
+			"template": "/templates/contact.ejs"
+		},
+		{ 
+			"path" : "^/public-key/?$",
+			"callback" : "page_callback",
+			"view" : "main",
+			"title": "Public Key",
+			"class" : "publickey",
+			"template": "/templates/publickey.ejs"
+		},
+		{ 
+			"path" : "^/%pagename%/?$",
+			"callback" : "page_callback",
+			"view" : "main",
+			"title": "Page",
+			"request": {
+				"post_type" : "page",
+				"pagename" : "%pagename%"
+			},
+			"class" : "page",
+			"template": "/templates/page.ejs"
+		}
+
+	]
+}

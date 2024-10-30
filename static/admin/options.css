@@ -1,0 +1,221 @@
+div#license_attribution { 
+	background-image:url('../images/creative_commons_icons.png');
+	background-repeat:no-repeat;
+	width:64px;
+	padding-top:74px;
+	text-align:center;
+}
+
+
+div#license_sharealike { 
+	background-image:url('../images/creative_commons_icons.png');
+	background-repeat:no-repeat;
+	background-position:-64px 0;
+	width:64px;
+	padding-top:74px;
+	text-align:center;
+}
+
+div#license_noncommercial { 
+	background-image:url('../images/creative_commons_icons.png');
+	background-repeat:no-repeat;
+	background-position:-128px 0;
+
+	width:64px;
+	padding-top:74px;
+	text-align:center;
+}
+
+#license_author { 
+	margin-bottom:15px;
+}
+
+div#license_noderiv { 
+	background-image:url('../images/creative_commons_icons.png');
+	background-repeat:no-repeat;
+	background-position:-192px 0;
+	width:64px;
+	padding-top:74px;
+	text-align:center;
+}
+
+div#license_publicdomain { 
+	background-image:url('../images/creative_commons_icons.png');
+	background-repeat:no-repeat;
+	background-position:-256px 0;
+	width:64px;
+	padding-top:74px;
+	text-align:center;
+}
+
+#license_or { 
+	font-size:21px;
+	padding-top:40px;
+	width:30px;
+	text-align:center;
+}
+
+#license_author_wrap { 
+	width:190px;
+}
+
+.cc_option_wrap { 
+	float:left;
+	margin-right:25px;
+	margin-top:10px;
+}
+
+.video-sources { 
+	width:100%;
+	text-align:left;
+}
+.download-options {
+	width:100%;
+	text-align:left;
+}
+.attribution-options { 
+	width:100%;
+}
+.attribution-option { 
+	width:100%;
+}
+.download-options td {
+}
+
+.attribution-option-html {
+	width:100%;
+}
+.download-options td, .attribution-options td {
+	border-bottom:1px solid #ccc;
+	padding:5px;
+	background-color:#ededed;
+}
+
+.fineart-description { 
+	width:100%;
+}
+.fineart-description textarea { 
+	width:100%;
+}
+.fineart-sales textarea { 
+	width:100%;
+}
+.fineart-sales input { 
+	width:100%;
+}
+.fineart-dimensions { 
+	width:100%;
+}
+.fineart-sales { 
+	width:100%;
+}
+
+.download-options th, .fineart-dimensions th, .fineart-sales th, .attribution-options th, .video-sources th, .image-sources th {
+    background-color:#DFDFDF;
+	font-size:12px;
+	text-align:left;
+	text-shadow:1px 1px #fff;
+	color:#333;
+	-moz-border-radius:5px 5px 0 0;
+	padding:5px;
+}
+
+.download-option-name, .download-option-format, .download-option-size, .download-option-url, .download-option-quantity {
+    width:100%;
+}
+
+.download-option-remove, .attribution-option-remove {
+    color:#000;
+	cursor:pointer;
+}
+
+.download-option-remove:hover, .attribution-option-remove:hover {
+    color:#d54e21;
+	cursor:pointer;
+}
+
+.downlaod-options {
+	width:100%;
+	text-align:left;
+    clear:both;
+}
+
+.download-options td, .fineart-dimensions td, .fineart-sales td, .video-sources td, .image-sources td {
+	border-bottom:1px solid #ccc;
+	padding:5px;
+	background-color:#ededed;
+}
+
+.download-options th, .fineart-dimensions th,  .fineart-sales th{
+    background-color:#DFDFDF;
+	font-size:12px;
+	text-shadow:1px 1px #fff;
+	color:#333;
+	-moz-border-radius:5px 5px 0 0;
+	padding:5px;
+}
+
+.download-option-name, .download-option-price, .download-option-weight, .download-option-sku, .download-option-quantity {
+        width:100%;
+}
+
+.download-option-remove, .attribution-option-remove {
+    color:#000;
+	cursor:pointer;
+}
+.attribution-option-remove { 
+}
+
+.download-option-remove:hover, .attribution-option-remove:hover {
+    color:#d54e21;
+	cursor:pointer;
+}
+
+.download-default {
+    float:right !important;
+    color:brown;
+}
+
+.download-note {
+    float:left !important;
+}
+.cover-image { 
+	width:300px;
+	height:auto;
+}
+.video-source-id { 
+	width:100%;
+}
+.image-header-id { 
+	width:20% !important;
+}
+.image-header-url { 
+	width:70% !important;
+}
+.video-header-id { 
+	width:8% !important;
+}
+.video-header-type { 
+	width:15% !important;
+}
+.video-header-url { 
+	width:50% !important;
+}
+.video-header-max { 
+	width:13% !important;
+}
+.videa-header-actions { 
+	width:20% !important;
+}
+.video-source-type { 
+	width:100%;
+}
+.video-source-url { 
+	width:60%;
+}
+.video-source-max { 
+	width:100%;
+}
+.video-source-upload-button { 
+	cursor:pointer;
+}

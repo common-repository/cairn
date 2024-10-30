@@ -1,0 +1,155 @@
+<% for(var i=0; i<items.length; i++) { %>
+	<div>
+
+		<div id="fineart-navigation">
+			<% if ( items[i]['permalink_next'] ) { %>
+				<a id="next" class="fineart-navigation" href="<%= items[i]['permalink_next'] %>"><</a>
+			<% } else { %>
+				<span id="next" class="fineart-navigation"><</span>
+			<% } %>
+			<a href="/shop/" id="thumbnails" class="fineart-navigation">th</a>
+			<% if ( items[i]['permalink_previous'] ) { %>
+				<a id="previous" class="fineart-navigation" href="<%= items[i]['permalink_previous'] %>">></a>
+			<% } else { %>
+				<span id="previous" class="fineart-navigation">></span>
+			<% } %>
+		</div>
+
+		<div id="fineart-gallery" class="fineart-gallery">
+			<img class="fineart-gallery-image" id="fineart-gallery-image" data-src="<%= items[i]['image'][0] %>" width="<%= items[i]['image'][1] %>" height="<%= items[i]['image'][2] %>"/>
+		</div>
+
+		<div id="fineart-gallery-info" class="fineart-gallery-info">
+			<div id="fineart-gallery-info-wrapper">
+	
+				<div class="fineart-gallery-title"><%= items[i]['title'] %></div>
+				<div class="fineart-gallery-by"><p><%= items[i]['details']['width'] %> x <%= items[i]['details']['height'] %> inches<br/><%= items[i]['pretty_date'] %><br/>By <a href="<%= items[i]['license']['author_url'] %>"><%= items[i]['license']['author'] %></a></p></div>
+
+				<div class="fineart-gallery-description"><%= items[i]['details']['description'] %></div>
+
+				<div class="fineart-actions">
+					<% if ( items[i]['sold'] == 'on' ) { %>
+						<span id="fineart-buybutton" class="fineart-buybutton sold" data-id="<%= items[i]['id'] %>">&#149;</span> 
+					<% } else { %>
+						<% 	var holds = []; var available = false; %>
+						<% if ( typeof(items[i]['options']) == 'object' ) { %>
+							<% if ( items[i]['options'].length > 1 ) { %>
+								<select id="fineart-buyoptions" class="fineart-buyoptions" name="fineart-buyoptions">
+
+								<% 
+								for(var po=0; po<items[i]['options'].length; po++) { 
+								%>
+									<% if ( items[i]['options'][po]['available'] ) { %>
+										<% available = true; %>
+										<option value="<%= po %>"><%= items[i]['options'][po]['name'] %></option>
+									<% 
+										} else {
+											if ( items[i]['options'][po]['holds'] > 0 ) { 
+												holds.push( items[i]['options'][po] );
+											}	
+										}
+
+									%>
+					
+								<% } %>
+
+								</select>
+
+
+							<% } else { %>
+
+								<% if ( items[i]['options'][0]['available'] ) { %>
+									<% available = true; %>
+									<input type="hidden" id="fineart-buyoptions" class="fineart-buyoptions" name="fineart-buyoptions" value="0"/>
+								<% 
+									} else {
+										if ( items[i]['options'][0]['holds'] > 0 ) { 
+											holds.push( items[i]['options'][0] );
+										} else {
+											%>
+											<span id="fineart-buybutton" class="fineart-buybutton sold" data-id="<%= items[i]['id'] %>">&#149;</span> 
+											<%
+										}
+									}
+
+								%>
+
+
+							<% } %>
+
+							<div id="fineart-buttons">
+
+							<% if ( available ) { %>
+
+								<span id="fineart-buybutton" class="fineart-buybutton" data-id="<%= items[i]['id'] %>">Buy</span>
+
+							<% } %>
+							
+						<% } else { %>
+
+							<span class="fineart-buybutton sold">&bull;</span>
+
+							<div id="fineart-buttons">
+
+						<% } %>
+
+						<a class="fineart-cartlink" href="/shop/invoice/">Checkout</a>
+						</div>
+
+						<br class="clearfix"/>
+
+						<% if ( typeof(holds) == 'object' ) { %>
+						<div id="fineart-holds">
+						<% for(var hi=0; hi<holds.length; hi++) { %>
+							<span class="fineart-buybutton hold">&bull;</span><%= holds[hi]['name'] %> On Hold
+						<% } %>
+						</div>
+						<% } %>
+
+					<% } %>
+
+				</div>
+
+				<% if ( typeof(items[i]['downloads']) == 'object' ) { %>
+				<div class="fineart-gallery-downloads">
+					<div class="fineart-gallery-info-title">Share</div>
+					<ul class="fineart-gallery-info-downloads">
+					<% for(var ai=0; ai<items[i]['downloads'].length; ai++) { %>
+						 <li class="fineart-gallery-downloads-link"><span class="fineart-gallery-info-download-meta-title"><a title="<%= items[i]['downloads'][ai]['url'] %>" rel="external" href="<%= items[i]['downloads'][ai]['url'] %>"><%= items[i]['downloads'][ai]['name'] %></a></span><span class="fineart-gallery-info-download-meta-size"><%= human_bytes(items[i]['downloads'][ai]['size'], 2) %></span><div class="clearfix"></div></li>
+					<% } %>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<% } %>				
+
+				<%= license_format( items[i]['license'] ) %>
+
+				<% if ( typeof(items[i]['attributions']) == 'object' ) { %>
+				<div class="fineart-gallery-references">
+					<div class="fineart-gallery-info-title">References</div>
+					<ul class="fineart-gallery-info-attributions">
+						<% for(var xi=0; xi<items[i]['attributions'].length; xi++) { %>
+							<li class="fineart-gallery-attribution"><%= items[i]['attributions'][xi]['html'] %></li>
+						<% } %>
+					</ul>
+					<br class="clearfix"/>
+				</div>
+				<% } %>				
+
+				<div id="gallery-footer">
+
+					<div id="gallery-logo"><img src="<%= smalllogo[0] %>"/></div>
+				
+					<div id="gallery-menu">
+						<a href="/portfolio/">Portfolio</a> |
+						<a href="<%= aboutpage %>">About</a> |
+						<a href="/news/">News</a> | 
+						<a href="/contact/">Contact</a>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+<% } %>

@@ -1,0 +1,58 @@
+<%= this.partial({url: templatesurl+'header.ejs'}) %>
+
+<div id="fineart-about">
+<div id="fineart-single-info">
+<h2 class="site-page-title">Contact</h2>  
+</div>
+<div><a href="<%= items[0]['permalink'] %>"></a> </div>
+<div class="body">
+<div>
+
+<p class="contactcenter">
+	<%= contact['name'] %><br/>
+	GPG Key: <a href="/public-key/"><%= contact['email_public_key_id'] %></a><br>
+	Email: <%= contact['email'] %><br/> 
+	<% if ( contact['sip_phone'] ) { %>
+		Phone: <%= contact['sip_phone'] %><br/>
+	<% } %>
+	<% if ( contact['bitmessage'] ) { %>
+		Bitmessage: <%= contact['bitmessage'] %>
+	<% } %>
+</p>
+
+<div id="contactform">
+	<input id="cname" tabindex="1" autocomplete="off" type="text" size="20" name="cname" placeholder="Your Full Name">
+	<input id="cemail" tabindex="2" autocomplete="off" type="text" size="20" name="cemail" placeholder="Your Email Address">
+	<input id="csip" tabindex="3" autocomplete="off" type="text" size="20" name="csip" placeholder="Your SIP Phone Address">
+	<textarea id="cpublickey" tabindex="4" title="Email Public Key" size="20" placeholder="Your Email Public Key"></textarea>
+	<textarea title="Your Message" tabindex="5&quot;" size="40" id="cmessage" placeholder="Your Message"></textarea>
+	<div id="messages" class="contact">
+	</div>		
+	<div id="sendwrap">
+	<input id="send" type="submit" value="Send Message">
+	</div>
+</div>
+
+
+<p class="contactcenter">
+	<% if ( contact['company_name'] ) { %>
+		<%= contact['company_name'] %><br/>
+		c/o <%= contact['name'] %><br/>
+	<% } else {  %>
+		<%= contact['name'] %><br/>
+	<% } %>
+	<%= contact['address1'] %> 	<%= contact['address2'] %><br/>
+	<%= contact['city'] %>, <%= contact['state'] %> <%= contact['zip'] %><br/>
+	<%= contact['country'] %><br/>
+	<%= contact['pots_phone'] %>
+</p>
+
+</div>
+
+</div>
+</div>
+
+<%= this.partial({url: templatesurl+'footer.ejs'}) %>
+
+
+

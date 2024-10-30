@@ -1,0 +1,27 @@
+<div class="portfolio-archive">
+	<% for(var i=0; i<items.length; i++) { %>
+			<div id="portfolio-thumbnail-<%= i %>" class="portfolio-thumbnail">
+				<%
+				var ratio = items[i]['image'][2] / items[i]['image'][1];
+				var width = 220;
+				var height = Math.round( width * ratio );
+				%>
+
+				<a href="<%= items[i]['permalink'] %>">
+					<div class="portfolio-thumbnail-play"></div>
+					<img src="<%= items[i]['image'][0] %>?w=<%= width %>&h=<%= height %>" width="<%= width %>" height="<%= height %>" />
+				</a>
+
+				<div>
+					<div class="fineart-gallery-title"><%= items[i]['title'] %></div>
+					<div class="fineart-gallery-by">
+						<p>
+							<%= items[i]['pretty_date'] %><br/>
+							By <a href="<%= items[i]['license']['author_url'] %>"><%= items[i]['license']['author'] %></a>
+						</p>
+					</div>
+				</div>
+
+			</div>
+	<% } %>
+</div>

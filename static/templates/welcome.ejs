@@ -1,0 +1,54 @@
+<%= this.partial({url: templatesurl+'header.ejs'}) %>
+
+<div id="welcome-video-wrapper">
+  <video id="welcome-video" poster="<%= cover_video_poster[0] %>" data-width="<%= cover_videos[0]['meta']['width'] %>" data-height="<%= cover_videos[0]['meta']['height'] %>" autoplay loop>
+	<% for ( var i=0; i<cover_videos.length; i++ ) { %>
+		<%	if ( cover_videos[i]['max'] ) { %>
+			<%	
+			if ( screen.width < screen.height ) {
+				var max = screen.height;
+			} else {
+				var max = screen.width;
+			}
+			if ( max <= cover_videos[i]['max'] ) { %>
+				<source src="<%= cover_videos[i]['url'] %>" type="<%= cover_videos[i]['type'] %>" width="<%= cover_videos[i]['meta']['width'] %>" height="<%= cover_videos[i]['meta']['height'] %>" media="all and (max-width:<%= cover_videos[i]['max'] %>px)"></source>
+			<% } %>
+		<%	} else { %>
+			<source src="<%= cover_videos[i]['url'] %>" type="<%= cover_videos[i]['type'] %>" width="<%= cover_videos[i]['meta']['width'] %>" height="<%= cover_videos[i]['meta']['height'] %>"></source>
+		<%	} %>
+	<% } %>
+  </video>
+</div>  
+
+<div id="welcome-message">
+	<div id="welcome-message-inner">
+
+		<div id="welcome-message-text">
+			<%= cover_display_text %>
+		</div>
+
+		<a href="<%= cover_button_link %>"><span id="welcome-message-action"><%= cover_button_text %></span></a>
+	</div>			
+
+</div>
+
+<div id="welcome-body">
+	<div id="welcome-body-inner">
+
+	<h2><a href="/portfolio/">Portfolio</a></h2>
+	<div id="portfolio-archive-wrapper"></div>
+
+	<h2><a href="/shop/">Shop</a></h2>
+	<div id="shop-archive-wrapper"></div>
+
+	<h2>About</h2>
+
+	<div id="about-wrapper"></div>
+
+	</div>
+
+	<%= this.partial({url: templatesurl+'footer.ejs'}) %>
+
+</div>
+
+

@@ -1,0 +1,14 @@
+<div class="fineart-archive">
+	<% for(var i=0; i<items.length; i++) { %>
+			<div id="fineart-thumbnail-<%= i %>" class="fineart-thumbnail">
+				<%
+				var ratio = items[i]['image'][2] / items[i]['image'][1];
+				var width = 100;
+				var height = Math.round( width * ratio );
+				%>
+
+				<a href="<%= items[i]['permalink'] %>"><img src="<%= items[i]['image'][0] %>?w=<%= width %>&h=<%= height %>" width="<%= width %>" height="<%= height %>" /></a>
+
+			</div>
+	<% } %>
+</div>

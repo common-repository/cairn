@@ -1,0 +1,2 @@
+Author: VerySimple                                                                                                                                                                                                  Author URI: http://verysimple.com/                                                                                                                                                                                  License: GPL2
+Source: http://wordpress.org/plugins/simplesecure/

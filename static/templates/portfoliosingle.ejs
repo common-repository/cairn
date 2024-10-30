@@ -1,0 +1,98 @@
+<% for(var i=0; i<items.length; i++) { %>
+	<div>
+
+		<div id="fineart-navigation">
+			<% if ( items[i]['permalink_next'] ) { %>
+				<a id="next" class="fineart-navigation" href="<%= items[i]['permalink_next'] %>"><</a>
+			<% } else { %>
+				<span id="next" class="fineart-navigation"><</span>
+			<% } %>
+			<a href="/portfolio/" id="thumbnails" class="fineart-navigation">th</a>
+			<% if ( items[i]['permalink_previous'] ) { %>
+				<a id="previous" class="fineart-navigation" href="<%= items[i]['permalink_previous'] %>">></a>
+			<% } else { %>
+				<span id="previous" class="fineart-navigation">></span>
+			<% } %>
+		</div>
+
+		<div id="fineart-gallery" class="fineart-gallery video">
+
+			<div id="fineart-gallery-video-poster-wrapper">
+
+				<div id="fineart-gallery-video-play"></div>
+				<img id="fineart-gallery-video-poster" src="<%= items[i]['image'][0] %>" width="<%= items[i]['image'][1] %>" height="<%= items[i]['image'][2] %>"/>
+
+			</div>
+
+			<video id="fineart-gallery-video" class="fineart-gallery-video">
+				<% for ( var vi=0; vi<items[i]['videos'].length; vi++ ) { %>
+				<%	if ( items[i]['videos'][vi]['max'] ) { %>
+				<%	
+					if ( screen.width < screen.height ) {
+						var max = screen.height;
+					} else {
+						var max = screen.width;
+					}
+				%>
+				<%		if ( max <= items[i]['videos'][vi]['max'] ) { %>
+							<source src="<%= items[i]['videos'][vi]['url'] %>" type="<%= items[i]['videos'][vi]['type'] %>" width="<%= items[i]['videos'][vi]['meta']['width'] %>" height="<%= items[i]['videos'][vi]['meta']['height'] %>" media="all and (max-width:<%=items[i]['videos'][vi]['max']%>px)"></source>
+				<%		} %>
+				<%	} else { %>
+					<source src="<%= items[i]['videos'][vi]['url'] %>" type="<%= items[i]['videos'][vi]['type'] %>" width="<%= items[i]['videos'][vi]['meta']['width'] %>" height="<%= items[i]['videos'][vi]['meta']['height'] %>"></source>
+				<%	} %>
+				<% } %>
+			</video>
+		</div>
+
+		<div id="fineart-gallery-info" class="fineart-gallery-info">
+			<div id="fineart-gallery-info-wrapper">
+	
+				<div class="fineart-gallery-title"><%= items[i]['title'] %></div>
+				<div class="fineart-gallery-by"><p><%= items[i]['pretty_date'] %><br/>By <a href="<%= items[i]['license']['author_url'] %>"><%= items[i]['license']['author'] %></a></p></div>
+
+				<div class="fineart-gallery-description"><%= items[i]['details']['description'] %></div>
+
+				<% if ( typeof(items[i]['downloads']) == 'object' ) { %>
+				<div class="fineart-gallery-downloads">
+					<div class="fineart-gallery-info-title">Share</div>
+					<ul class="fineart-gallery-info-downloads">
+					<% for(var ai=0; ai<items[i]['downloads'].length; ai++) { %>
+						 <li class="fineart-gallery-downloads-link"><span class="fineart-gallery-info-download-meta-title"><a title="<%= items[i]['downloads'][ai]['url'] %>" rel="external" href="<%= items[i]['downloads'][ai]['url'] %>"><%= items[i]['downloads'][ai]['name'] %></a></span><span class="fineart-gallery-info-download-meta-size"><%= human_bytes(items[i]['downloads'][ai]['size'], 2) %></span><div class="clearfix"></div></li>
+					<% } %>
+					</ul>
+					<div class="clearfix"></div>
+				</div>
+				<% } %>				
+
+				<%= license_format( items[i]['license'] ) %>
+
+				<% if ( typeof(items[i]['attributions']) == 'object' ) { %>
+				<div class="fineart-gallery-references">
+					<div class="fineart-gallery-info-title">References</div>
+					<ul class="fineart-gallery-info-attributions">
+						<% for(var xi=0; xi<items[i]['attributions'].length; xi++) { %>
+							<li class="fineart-gallery-attribution"><%= items[i]['attributions'][xi]['html'] %></li>
+						<% } %>
+					</ul>
+					<br class="clearfix"/>
+				</div>
+				<% } %>				
+
+				<div id="gallery-footer">
+
+					<div id="gallery-logo"><img src="<%= smalllogo[0] %>"/></div>
+				
+					<div id="gallery-menu">
+						<a href="/shop/">Shop</a> |
+						<a href="<%= aboutpage %>">About</a> |
+						<a href="/news/">News</a> | 
+						<a href="/contact/">Contact</a>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+<% } %>
+

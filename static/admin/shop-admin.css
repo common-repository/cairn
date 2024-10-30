@@ -1,0 +1,119 @@
+textarea.description { 
+	width:100%;
+}
+.purchase-options {
+	vertical-align:top;
+	width:100%;
+	text-align:left;
+}
+.shop-notify-emails { 
+	width:50%;
+	height:100px;
+}
+
+.purchase-options td {
+	vertical-align:top;
+	border-bottom:1px solid #ccc;
+	padding:5px;
+}
+
+
+.purchase-options tr:nth-child(even){  
+	background-color:#ededed; 
+}
+.purchase-options tr:nth-child(odd){
+	background-color:#dadada; 
+}
+
+.purchase-options th {
+    background-color:#3c3c3c;
+	font-size:12px;
+	text-shadow:1px 1px #000;
+	color:#fff;
+	-moz-border-radius:5px 5px 0 0;
+	padding:5px;
+}
+
+.purchase-option-name, .purchase-option-price, .purchase-option-weight, .purchase-option-sku, .purchase-option-quantity, .purchase-option-width, .purchase-option-height, .purchase-option-length {
+    width:100%;
+}
+
+.purchase-option-remove {
+    color:#000;
+	cursor:pointer;
+}
+
+.purchase-option-remove:hover {
+    color:#d54e21;
+	cursor:pointer;
+}
+
+.shipping-options {
+	width:100%;
+	text-align:left;
+    clear:both;
+}
+
+.shipping-options td {
+	border-bottom:1px solid #ccc;
+	padding:5px;
+	background-color:#ededed;
+}
+
+.shipping-options th {
+    background-color:#DFDFDF;
+	font-size:12px;
+	text-shadow:1px 1px #fff;
+	color:#333;
+	-moz-border-radius:5px 5px 0 0;
+	padding:5px;
+}
+
+.shipping-option-name, .shipping-option-price, .shipping-option-weight, .shipping-option-sku, .shipping-option-quantity {
+        width:100%;
+}
+
+.shipping-option-remove {
+    color:#000;
+	cursor:pointer;
+}
+
+.shipping-option-remove:hover {
+    color:#d54e21;
+	cursor:pointer;
+}
+
+.shipping-default {
+    float:right !important;
+    color:brown;
+}
+
+.shipping-note {
+    float:left !important;
+}
+.action-capture { 
+	backgroud-co
+}
+.order-actions { 
+	margin-top:20px;
+}
+.secured-info { 
+	color:green !important;
+}
+#legend { 
+	float:right;
+}
+.products td { 
+	padding-bottom:30px;
+}
+.products td strong { 
+	color:#000;
+}
+.secured-lock { 
+	float:left;
+	margin-right:4px;
+	margin-bottom:4px;
+}
+.confirmation-id { 
+	color:green !important;
+}
